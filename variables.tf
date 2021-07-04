@@ -7,14 +7,14 @@ variable "domain" {
 }
 
 variable "do_image" {
-  default     = "ubuntu-20-04-x64"
+  default = "ubuntu-20-04-x64"
 }
 
 variable "do_location" {
-  default     = "fra1"
+  default = "fra1"
 }
 
-variable "droplet_count"{
+variable "droplet_count" {
   default = 1
 }
 
@@ -23,9 +23,9 @@ variable "do_instance_size" {
 
   default = {
     "5$"  = "s-1vcpu-1gb"
-    "10$"   = "s-1vcpu-2gb"
-    "15$"   = "s-2vcpu-2gb"
-    "20$"   = "s-2vcpu-4gb"
+    "10$" = "s-1vcpu-2gb"
+    "15$" = "s-2vcpu-2gb"
+    "20$" = "s-2vcpu-4gb"
   }
 }
 

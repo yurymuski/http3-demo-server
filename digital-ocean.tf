@@ -36,7 +36,7 @@ resource "digitalocean_droplet" "http3_yurets_pro" {
   }
 
   provisioner "file" {
-    content     = templatefile("./files/nginx.conf", {
+    content = templatefile("./files/nginx.conf", {
       domain = var.domain
       }
     )
@@ -44,7 +44,7 @@ resource "digitalocean_droplet" "http3_yurets_pro" {
   }
 
   provisioner "file" {
-    content     = templatefile("./files/cloudflare.ini", {
+    content = templatefile("./files/cloudflare.ini", {
       cf_token = var.certbot_cf_token
       }
     )
