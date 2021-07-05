@@ -1,4 +1,4 @@
-# http3-demo-server
+# http3-demo-terraform
 
 Terraform setup of http3 demo server (Digital Ocean) 
 
