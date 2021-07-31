@@ -2,7 +2,6 @@
 #                          SSH KEY                           #
 ##############################################################
 
-### S ###
 resource "digitalocean_ssh_key" "http3_yurets_pro" {
   name       = "yurets"
   public_key = file("~/.ssh/id_rsa.pub")
