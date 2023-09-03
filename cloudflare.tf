@@ -49,4 +49,5 @@ resource "cloudflare_bot_management" "bot_protenction" {
   zone_id           = data.cloudflare_zones.http3_yurets_pro.zones.0.id
   auto_update_model = true
   fight_mode        = true
+  enable_js         = true
 }
