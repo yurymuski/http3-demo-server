@@ -17,7 +17,6 @@ resource "digitalocean_droplet" "http3_yurets_pro" {
   name               = var.domain
   region             = var.do_location
   size               = var.do_instance_size["5$"]
-  private_networking = true
 
   ssh_keys = [
     digitalocean_ssh_key.http3_yurets_pro.id
@@ -63,7 +62,7 @@ resource "digitalocean_droplet" "http3_yurets_pro" {
       "sudo wget https://github.com/bcicen/ctop/releases/download/0.7.6/ctop-0.7.6-linux-amd64 -O /usr/local/bin/ctop && sudo chmod +x /usr/local/bin/ctop",
       "/usr/bin/docker run -i --rm --name certbot -v /opt/letsencrypt:/etc/letsencrypt -v /opt/cloudflare.ini:/tmp/cloudflare.ini  certbot/dns-cloudflare certonly --dns-cloudflare --dns-cloudflare-credentials /tmp/cloudflare.ini --agree-tos --email ${var.certbot_email} --no-eff-email -d ${var.domain}",
       "echo '@weekly /usr/bin/docker run -i --rm --name certbot -v /opt/letsencrypt:/etc/letsencrypt -v /opt/cloudflare.ini:/tmp/cloudflare.ini  certbot/dns-cloudflare certonly --dns-cloudflare --dns-cloudflare-credentials /tmp/cloudflare.ini --agree-tos --email ${var.certbot_email} --no-eff-email -d ${var.domain} --keep-until-expiring > /tmp/last_cron && /usr/bin/docker restart nginx' > /var/spool/cron/crontabs/root",
-      "/usr/bin/docker run --name nginx -d -p 80:80 -p 443:443/tcp -p 443:443/udp -v /opt/letsencrypt/:/opt/nginx/certs/ -v /opt/nginx.conf:/etc/nginx/nginx.conf -v /opt/index.html:/etc/nginx/html/index.html ymuski/nginx-quic"
+      "/usr/bin/docker run --name nginx -d -p 80:80 -p 443:443/tcp -p 443:443/udp -v /opt/letsencrypt/:/opt/nginx/certs/ -v /opt/nginx.conf:/etc/nginx/nginx.conf -v /opt/index.html:/etc/nginx/html/index.html ymuski/nginx-http3"
     ]
   }
 

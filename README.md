@@ -17,8 +17,3 @@ terraform plan -out=http3.plan
 terraform apply http3.plan
 ```
 
----
-## TODO
-
-- [ ] Add HTTPS dns record 
-  >  expected type to be one of [A AAAA CAA CNAME TXT SRV LOC MX NS SPF CERT DNSKEY DS NAPTR SMIMEA SSHFP TLSA URI PTR], got HTTPS

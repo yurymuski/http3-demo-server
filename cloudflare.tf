@@ -19,6 +19,21 @@ resource "cloudflare_record" "http3_yurets_pro" {
   proxied = false
 }
 
+resource "cloudflare_record" "https" {
+  count = var.droplet_count
+
+  zone_id = data.cloudflare_zones.http3_yurets_pro.zones.0.id
+  name    = "http3"
+  type    = "HTTPS"
+  ttl     = 1
+  proxied = false
+  data  {
+      priority       = 1
+      target         = "http3.yurets.pro."
+      value          = "alpn=\"h3,h2\""
+  }
+}
+
 resource "cloudflare_record" "http3_yurets_pro_extra_record" {
   for_each = var.domain_record
 

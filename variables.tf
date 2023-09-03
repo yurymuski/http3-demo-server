@@ -29,22 +29,9 @@ variable "do_instance_size" {
   }
 }
 
-variable "cloudflare_account_id" {
-  default = "c967910d169b331b6bd6459df38255eb"
-}
-
-# TODO: HTTPS record
 variable "domain_record" {
   type = map(any)
-  default = {
-    # http3 = {
-    #   name    = "http3"
-    #   value   = "alpn=\"h3,h2\""
-    #   type    = "HTTPS"
-    #   ttl     = 1
-    #   proxied = false
-    # }
-  }
+  default = {}
 }
 
 variable "certbot_email" {
