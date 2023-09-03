@@ -12,11 +12,11 @@ resource "digitalocean_ssh_key" "http3_yurets_pro" {
 ##############################################################
 
 resource "digitalocean_droplet" "http3_yurets_pro" {
-  count              = var.droplet_count
-  image              = var.do_image
-  name               = var.domain
-  region             = var.do_location
-  size               = var.do_instance_size["5$"]
+  count  = var.droplet_count
+  image  = var.do_image
+  name   = var.domain
+  region = var.do_location
+  size   = var.do_instance_size["5$"]
 
   ssh_keys = [
     digitalocean_ssh_key.http3_yurets_pro.id

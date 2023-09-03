@@ -27,10 +27,10 @@ resource "cloudflare_record" "https" {
   type    = "HTTPS"
   ttl     = 1
   proxied = false
-  data  {
-      priority       = 1
-      target         = "http3.yurets.pro."
-      value          = "alpn=\"h3,h2\""
+  data {
+    priority = 1
+    target   = "http3.yurets.pro."
+    value    = "alpn=\"h3,h2\""
   }
 }
 
@@ -43,4 +43,10 @@ resource "cloudflare_record" "http3_yurets_pro_extra_record" {
   value   = each.value.value
   ttl     = each.value.ttl
   proxied = each.value.proxied
+}
+
+resource "cloudflare_bot_management" "bot_protenction" {
+  zone_id           = data.cloudflare_zones.http3_yurets_pro.zones.0.id
+  auto_update_model = true
+  fight_mode        = true
 }

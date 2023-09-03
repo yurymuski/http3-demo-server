@@ -30,7 +30,7 @@ variable "do_instance_size" {
 }
 
 variable "domain_record" {
-  type = map(any)
+  type    = map(any)
   default = {}
 }
 
